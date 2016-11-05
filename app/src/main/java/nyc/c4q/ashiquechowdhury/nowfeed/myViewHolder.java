@@ -16,7 +16,7 @@ public class myViewHolder extends RecyclerView.ViewHolder {
         tv = (TextView) itemView.findViewById(R.id.cardview_text);
     }
 
-    public void bind(String input){
-        tv.setText(input);
+    public void bind(Object input){
+        tv.setText(input.toString());
     }
 }

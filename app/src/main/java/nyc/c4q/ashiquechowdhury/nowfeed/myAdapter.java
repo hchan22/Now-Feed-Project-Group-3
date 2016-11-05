@@ -5,24 +5,49 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by ashiquechowdhury on 10/30/16.
  */
-public class myAdapter extends RecyclerView.Adapter<myViewHolder> {
-    List<String> myList = Arrays.asList("ridita" , "helen" , "ashique");
+public class myAdapter extends RecyclerView.Adapter {
+    private final static int NUMBER = 1, TEXT = 2;
+    List<Object> myList;
 
-    @Override
-    public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View childView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
-        return new myViewHolder(childView);
+    public myAdapter(List aList){
+        myList = aList;
     }
 
     @Override
-    public void onBindViewHolder(myViewHolder holder, int position) {
-        holder.bind(myList.get(position));
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View childView = null;
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+
+        if(viewType == 1){
+            childView = inflater.inflate(R.layout.cardview, parent, false);
+            return new myViewHolder(childView);
+        }
+        else if(viewType ==2){
+            childView = inflater.inflate(R.layout.integer_layout, parent,false);
+            return new textViewHolder(childView);
+        }
+        return null;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemViewType(int position){
+        if(myList.get(position) instanceof String){
+            return 1;
+        }
+        if(myList.get(position) instanceof Integer){
+            return 2;
+        }
+        return 0;
     }
 
     @Override
