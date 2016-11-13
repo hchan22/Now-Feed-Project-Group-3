@@ -56,10 +56,7 @@ public class TestViewHolder extends RecyclerView.ViewHolder {
         call.enqueue(new Callback<BuzzfeedResponse>() {
             @Override
             public void onResponse(Call<BuzzfeedResponse> call, Response<BuzzfeedResponse> response) {
-                BuzzfeedResponse buzzresponse = response.body();
-
-
-
+                BuzzfeedResponse buzzresponse = response.body()
 
                 mAdapter.addArticleList(buzzresponse.getArticles());
             }
