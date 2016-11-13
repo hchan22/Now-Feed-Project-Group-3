@@ -16,14 +16,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         populateNameList();
         mRecyclerView = (RecyclerView) findViewById(R.id.rView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new myAdapter(nameList));
+
+
     }
 
-    public void populateNameList(){
+
+    public void populateNameList() {
         nameList = new ArrayList<>();
         nameList.add("Ashique");
         nameList.add(12);
@@ -31,4 +33,6 @@ public class MainActivity extends AppCompatActivity {
         nameList.add("Helen");
         nameList.add(13);
     }
+
+
 }

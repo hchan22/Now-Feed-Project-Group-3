@@ -17,6 +17,7 @@ public class textViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind(Object number){
+
         integerView.setText(number.toString());
     }
 }
