@@ -1,4 +1,4 @@
-package nyc.c4q.ashiquechowdhury.nowfeed;
+package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import nyc.c4q.ashiquechowdhury.nowfeed.network.Article;
+import nyc.c4q.ashiquechowdhury.nowfeed.R;
+import nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed.network.Article;
 
 /**
  * Created by helenchan on 11/12/16.

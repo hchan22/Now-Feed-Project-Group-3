@@ -1,4 +1,4 @@
-package nyc.c4q.ashiquechowdhury.nowfeed.network;
+package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed.network;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

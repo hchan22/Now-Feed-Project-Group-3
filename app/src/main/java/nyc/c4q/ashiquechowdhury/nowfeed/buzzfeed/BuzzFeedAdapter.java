@@ -1,4 +1,4 @@
-package nyc.c4q.ashiquechowdhury.nowfeed;
+package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import nyc.c4q.ashiquechowdhury.nowfeed.network.Article;
+import nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed.network.Article;
 
 /**
  * Created by helenchan on 11/12/16.
@@ -16,8 +16,8 @@ public class BuzzFeedAdapter extends RecyclerView.Adapter {
     Context context;
     private List<Article> articles = new ArrayList<>();
 
-    public BuzzFeedAdapter(Context context) {
-        this.context = context;
+    public BuzzFeedAdapter() {
+
     }
 
 
