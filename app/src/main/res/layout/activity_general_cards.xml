@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.ashiquechowdhury.nowfeed.MainActivity">
+    tools:context="nyc.c4q.ashiquechowdhury.nowfeed.GeneralCardActivity">
    <android.support.v7.widget.RecyclerView
        android:id="@+id/cards_recycler_view"
        android:layout_width="match_parent"

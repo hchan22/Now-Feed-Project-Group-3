@@ -1,5 +1,6 @@
 package nyc.c4q.ashiquechowdhury.nowfeed.moviedb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,15 +32,16 @@ public class MovieActivity extends AppCompatActivity {
         myMoviesss = new ArrayList<>();
         movieRecyclerView = (RecyclerView) findViewById(R.id.movie_recycler);
         movieRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        callMovieRetrofit();
+        Intent intent = getIntent();
+        String year = intent.getStringExtra(GeneralMovieCardViewHolder.YEAR);
+        callMovieRetrofit(year);
     }
 
-    private void callMovieRetrofit() {
+    private void callMovieRetrofit(String year) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.themoviedb.org/").addConverterFactory(GsonConverterFactory.create()).build();
         MoviedbAPI MovieAPI = retrofit.create(MoviedbAPI.class);
 
-        Call<MovieList> call = MovieAPI.listMovies();
+        Call<MovieList> call = MovieAPI.listPopularMovies(year, "vote_average.desc","75142b6ae9b9f1b3d247b1af9a6131e9");
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
