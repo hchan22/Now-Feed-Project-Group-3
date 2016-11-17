@@ -1,4 +1,4 @@
-package nyc.c4q.ashiquechowdhury.nowfeed.network;
+package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed.network;
 
 /**
  * Created by helenchan on 11/12/16.
@@ -11,6 +11,7 @@ public class Article {
     String url;
     String urlToImage;
     String publishedAt;
+
 
     public String getAuthor() {
         return author;

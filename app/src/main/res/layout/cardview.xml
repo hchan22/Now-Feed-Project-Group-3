@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_marginBottom="5dp"
+    android:orientation="vertical"
     cardview:cardCornerRadius="2dp"
     cardview:cardElevation="3dp"
-    cardview:cardUseCompatPadding="true"
-    android:orientation="vertical">
+    cardview:cardUseCompatPadding="true">
 
     <TextView
         android:id="@+id/idtesttext"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        />
+        android:layout_height="100dp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardview_rv"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="300dp"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
