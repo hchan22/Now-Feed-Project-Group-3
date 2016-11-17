@@ -12,11 +12,11 @@ import nyc.c4q.ashiquechowdhury.nowfeed.R;
 /**
  * Created by ashiquechowdhury on 11/13/16.
  */
-public class MovieViewHolder extends RecyclerView.ViewHolder{
+public class MovieYearViewHolder extends RecyclerView.ViewHolder{
     ImageView movieImage;
     TextView movieDescription;
 
-    public MovieViewHolder(View itemView) {
+    public MovieYearViewHolder(View itemView) {
         super(itemView);
         movieImage = (ImageView) itemView.findViewById(R.id.myMovieImageView);
         movieDescription = (TextView) itemView.findViewById(R.id.movie_decription_textView);
@@ -25,6 +25,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder{
 
     public void bind(MovieDescriptions movieDescriptions) {
         movieDescription.setText(movieDescriptions.getDescription());
-        Picasso.with(itemView.getContext()).load("http://image.tmdb.org/t/p/w300" + movieDescriptions.getImagePath()).resize(130,130).into(movieImage);
+        Picasso.with(itemView.getContext()).load("http://image.tmdb.org/t/p/w300" + movieDescriptions.getImagePath()).fit().into(movieImage);
     }
 }

@@ -12,6 +12,7 @@ public class Article {
     String urlToImage;
     String publishedAt;
 
+
     public String getAuthor() {
         return author;
     }

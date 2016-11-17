@@ -1,5 +1,6 @@
 package nyc.c4q.ashiquechowdhury.nowfeed.moviedb;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ public class GeneralMovieCardViewHolder extends RecyclerView.ViewHolder{
     ImageView movieImage;
     TextView yearOfMovie;
     TextView movieTitleView;
+    public static final String YEAR = "nyc.c4q.ashiquechowdhury.YEAR";
 
     public GeneralMovieCardViewHolder(View itemView) {
         super(itemView);
@@ -30,6 +32,18 @@ public class GeneralMovieCardViewHolder extends RecyclerView.ViewHolder{
         String movieTitle = movie.getTitle();
         movieTitleView.setText(movieTitle);
         yearOfMovie.setText(" " + year + " Popular Hit");
-        Picasso.with(itemView.getContext()).load("http://image.tmdb.org/t/p/w300" + movie.getPoster_path()).resize(130,200).into(movieImage);
+        Picasso.with(itemView.getContext()).load("http://image.tmdb.org/t/p/w300" + movie.getPoster_path()).fit().into(movieImage);
+        itemView.setOnClickListener(movieClickListener(year));
+    }
+
+    private View.OnClickListener movieClickListener(final String year) {
+        return new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MovieActivity.class);
+                intent.putExtra(YEAR, year);
+                view.getContext().startActivity(intent);
+            }
+        };
     }
 }
