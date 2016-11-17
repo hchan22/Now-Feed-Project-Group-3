@@ -33,8 +33,6 @@ public class GeneralCardActivity extends AppCompatActivity{
         myList = new ArrayList<>();
         myList.add(new String("BuzzFeed"));
 
-//        mCardsRecyclerView = (RecyclerView) findViewById(R.id.cards_recycler_view);
-//        mCardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         String movieYear = pickRandomMovieYear();
         addPopularMovie(movieYear);
 
