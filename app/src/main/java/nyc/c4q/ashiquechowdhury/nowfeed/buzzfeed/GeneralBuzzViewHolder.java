@@ -1,6 +1,6 @@
 package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -14,9 +14,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ashiquechowdhury on 11/17/16.
- */
+
 public class GeneralBuzzViewHolder extends RecyclerView.ViewHolder {
     private static final String API_KEY = BuildConfig.API_KEY;
     private RecyclerView recycle;
@@ -24,7 +22,7 @@ public class GeneralBuzzViewHolder extends RecyclerView.ViewHolder {
     public GeneralBuzzViewHolder(View itemView) {
         super(itemView);
         recycle = (RecyclerView) itemView.findViewById(R.id.buzz_card_rview);
-        recycle.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
+        recycle.setLayoutManager(new GridLayoutManager(itemView.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
         getBuzzfeedArticle();
     }
 

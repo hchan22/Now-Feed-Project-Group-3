@@ -15,9 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ashiquechowdhury on 11/16/16.
- */
+
 public class BuzzActivity extends AppCompatActivity{
     private static final String API_KEY = BuildConfig.API_KEY;
 
