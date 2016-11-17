@@ -48,24 +48,25 @@ public class GeneralAdapter extends RecyclerView.Adapter {
                 ((GeneralBuzzViewHolder) holder).bind();
                 break;
             case MOVIE:
-                ((GeneralMovieCardViewHolder) holder).bind((Movie) myCards.get(position));
+                ((GeneralMovieCardViewHolder) holder).bind((Movie) myCards.get(position%(myCards.size())));
                 break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return myCards.size();
+        return 20000000;
     }
 
     @Override
     public int getItemViewType(int position){
-        if(myCards.get(position) instanceof Movie){
+        if(myCards.get(position% (myCards.size())) instanceof Movie){
             return MOVIE;
         }
-        else if(myCards.get(position) instanceof String){
+        else if(myCards.get(position% (myCards.size())) instanceof String){
             return BUZZ;
         }
         return -1;
     }
+
 }
