@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nyc.c4q.ashiquechowdhury.nowfeed.network.Article;
 
 /**
@@ -18,13 +21,14 @@ import nyc.c4q.ashiquechowdhury.nowfeed.network.Article;
 
 public class BuzzArticleHolder extends RecyclerView.ViewHolder {
 
+
     private View mView;
     private TextView titleText;
     private TextView textView;
     private ImageView imageview;
-    private RecyclerView recycle;
-    Context context;
-
+    private RecyclerView mBuzzArticleRecycleView;
+    private Context context = itemView.getContext();
+    private List<Article> articleList = new ArrayList<>();
 
 
     public BuzzArticleHolder(ViewGroup parent) {
@@ -33,16 +37,15 @@ public class BuzzArticleHolder extends RecyclerView.ViewHolder {
         titleText = (TextView) mView.findViewById(R.id.title_text);
         textView = (TextView) mView.findViewById(R.id.description_text);
         imageview = (ImageView) mView.findViewById(R.id.image_view);
-
     }
 
-    public void bind(Article article) {
+    public void bind(Object data) {
+        Article article = (Article) data;
         titleText.setText(article.getTitle());
         textView.setText(article.getDescription());
         Picasso.with(context)
                 .load(article.getUrlToImage())
                 .into(imageview);
-
     }
 
 
@@ -50,6 +53,8 @@ public class BuzzArticleHolder extends RecyclerView.ViewHolder {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         return inflater.inflate(R.layout.buzzfeed_layout, parent, false);
     }
+
+
 
 
 }

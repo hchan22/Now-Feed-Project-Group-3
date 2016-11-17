@@ -1,6 +1,7 @@
 package nyc.c4q.ashiquechowdhury.nowfeed;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,16 +11,21 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
-    List<Object> nameList;
+    public List<Object> nameList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         populateNameList();
-        mRecyclerView = (RecyclerView) findViewById(R.id.rView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(new myAdapter(nameList));
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                mRecyclerView = (RecyclerView) findViewById(R.id.rView);
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                mRecyclerView.setAdapter(new CardAdapter());
+            }
+        }, 10000);
 
 
     }
@@ -35,4 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
 }
+
