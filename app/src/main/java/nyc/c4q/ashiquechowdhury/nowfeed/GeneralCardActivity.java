@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,20 +24,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GeneralCardActivity extends AppCompatActivity{
     RecyclerView mCardsRecyclerView;
     Random random;
+    List<Object> myList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_cards);
+        myList = new ArrayList<>();
+        myList.add(new String("BuzzFeed"));
 
 //        mCardsRecyclerView = (RecyclerView) findViewById(R.id.cards_recycler_view);
 //        mCardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        String movieYear = pickRandomMovieYear();
-//        addPopularMovie(movieYear);
+        String movieYear = pickRandomMovieYear();
+        addPopularMovie(movieYear);
 
         mCardsRecyclerView = (RecyclerView) findViewById(R.id.cards_recycler_view);
         mCardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mCardsRecyclerView.setAdapter(new GeneralAdapter("Buzz"));
     }
 
     private void addPopularMovie(String movieYear) {
@@ -54,7 +57,9 @@ public class GeneralCardActivity extends AppCompatActivity{
                 random = new Random();
                 int randomMovieNumber = random.nextInt(10);
                 Movie specificMovie = popularMovieList.get(randomMovieNumber);
-                mCardsRecyclerView.setAdapter(new GeneralAdapter(specificMovie));
+
+                myList.add(specificMovie);
+                mCardsRecyclerView.setAdapter(new GeneralAdapter(myList));
             }
 
             @Override
