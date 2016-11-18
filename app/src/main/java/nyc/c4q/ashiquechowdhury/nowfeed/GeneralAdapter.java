@@ -20,7 +20,7 @@ public class GeneralAdapter extends RecyclerView.Adapter {
 
     List<Object> myCards;
 
-    public GeneralAdapter(List<Object> myList){
+    public GeneralAdapter(List<Object> myList) {
         myCards = myList;
     }
 
@@ -28,11 +28,10 @@ public class GeneralAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View childView;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        if(viewType == BUZZ){
+        if (viewType == BUZZ) {
             childView = inflater.inflate(R.layout.buzz_card_row, parent, false);
             return new GeneralBuzzViewHolder(childView);
-        }
-        else if(viewType == MOVIE){
+        } else if (viewType == MOVIE) {
             childView = inflater.inflate(R.layout.movie_card_row, parent, false);
             return new GeneralMovieCardViewHolder(childView);
         }
@@ -43,12 +42,12 @@ public class GeneralAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch(holder.getItemViewType()){
+        switch (holder.getItemViewType()) {
             case BUZZ:
                 ((GeneralBuzzViewHolder) holder).bind();
                 break;
             case MOVIE:
-                ((GeneralMovieCardViewHolder) holder).bind((Movie) myCards.get(position%(myCards.size())));
+                ((GeneralMovieCardViewHolder) holder).bind((Movie) myCards.get(position % (myCards.size())));
                 break;
         }
     }
@@ -59,11 +58,10 @@ public class GeneralAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public int getItemViewType(int position){
-        if(myCards.get(position% (myCards.size())) instanceof Movie){
+    public int getItemViewType(int position) {
+        if (myCards.get(position % (myCards.size())) instanceof Movie) {
             return MOVIE;
-        }
-        else if(myCards.get(position% (myCards.size())) instanceof String){
+        } else if (myCards.get(position % (myCards.size())) instanceof String) {
             return BUZZ;
         }
         return -1;

@@ -1,5 +1,7 @@
 package nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,14 +58,25 @@ public class BuzzFeedAdapter extends RecyclerView.Adapter {
             imageview = (ImageView) mView.findViewById(R.id.image_view);
         }
 
-        public void bind(Article article){
+        public void bind(final Article article){
             titleText.setText(article.getTitle());
             textView.setText(article.getDescription());
             Picasso.with(itemView.getContext())
                     .load(article.getUrlToImage()).fit()
                     .into(imageview);
 
+            mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Uri uri = Uri.parse(article.getUrl());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    mView.getContext().startActivity(intent);
+                }
+            });
+
         }
+
+
     }
 
     private static View inflateView(ViewGroup parent) {
