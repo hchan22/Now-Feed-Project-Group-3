@@ -58,7 +58,7 @@ public class BuzzFeedAdapter extends RecyclerView.Adapter {
             imageview = (ImageView) mView.findViewById(R.id.image_view);
         }
 
-        public void bind(final Article article){
+        public void bind(final Article article) {
             titleText.setText(article.getTitle());
             textView.setText(article.getDescription());
             Picasso.with(itemView.getContext())
