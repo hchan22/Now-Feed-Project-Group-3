@@ -10,6 +10,8 @@ import java.util.List;
 import nyc.c4q.ashiquechowdhury.nowfeed.buzzfeed.GeneralBuzzViewHolder;
 import nyc.c4q.ashiquechowdhury.nowfeed.moviedb.GeneralMovieCardViewHolder;
 import nyc.c4q.ashiquechowdhury.nowfeed.moviedb.network.Movie;
+import nyc.c4q.ashiquechowdhury.nowfeed.weather.WeatherViewHolder;
+import nyc.c4q.ashiquechowdhury.nowfeed.weather.network.WeatherData;
 
 /**
  * Created by ashiquechowdhury on 11/14/16.
@@ -17,6 +19,7 @@ import nyc.c4q.ashiquechowdhury.nowfeed.moviedb.network.Movie;
 public class GeneralAdapter extends RecyclerView.Adapter {
     private static final int MOVIE = 1;
     private static final int BUZZ = 2;
+    private static final int WEATHER = 3;
 
     List<Object> myCards;
 
@@ -34,6 +37,9 @@ public class GeneralAdapter extends RecyclerView.Adapter {
         } else if (viewType == MOVIE) {
             childView = inflater.inflate(R.layout.movie_card_row, parent, false);
             return new GeneralMovieCardViewHolder(childView);
+        } else if (viewType == WEATHER){
+            childView = inflater.inflate(R.layout.weather_card_row, parent, false);
+            return new WeatherViewHolder(childView);
         }
         childView = inflater.inflate(R.layout.movie_card_row, parent, false);
         return new GeneralBuzzViewHolder(childView);
@@ -49,6 +55,9 @@ public class GeneralAdapter extends RecyclerView.Adapter {
             case MOVIE:
                 ((GeneralMovieCardViewHolder) holder).bind((Movie) myCards.get(position % (myCards.size())));
                 break;
+            case WEATHER:
+                ((WeatherViewHolder) holder).bind((WeatherData) myCards.get(position % (myCards.size())));
+                break;
         }
     }
 
@@ -63,8 +72,9 @@ public class GeneralAdapter extends RecyclerView.Adapter {
             return MOVIE;
         } else if (myCards.get(position % (myCards.size())) instanceof String) {
             return BUZZ;
+        } else {
+            return WEATHER;
         }
-        return -1;
     }
 
 }

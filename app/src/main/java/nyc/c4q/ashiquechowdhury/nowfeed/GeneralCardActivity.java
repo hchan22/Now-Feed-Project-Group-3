@@ -21,23 +21,25 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by ashiquechowdhury on 11/14/16.
  */
-public class GeneralCardActivity extends AppCompatActivity{
+public class GeneralCardActivity extends AppCompatActivity {
     RecyclerView mCardsRecyclerView;
     Random random;
     List<Object> myList;
+    GeneralAdapter mAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_cards);
         myList = new ArrayList<>();
         myList.add(new String("BuzzFeed"));
-
         String movieYear = pickRandomMovieYear();
+
         addPopularMovie(movieYear);
 
         mCardsRecyclerView = (RecyclerView) findViewById(R.id.cards_recycler_view);
         mCardsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     private void addPopularMovie(String movieYear) {
@@ -46,7 +48,7 @@ public class GeneralCardActivity extends AppCompatActivity{
                 .build();
         MoviedbAPI movieApi = retrofit.create(MoviedbAPI.class);
 
-        Call<MovieList> call = movieApi.listPopularMovies(movieYear, "vote_average.desc","75142b6ae9b9f1b3d247b1af9a6131e9");
+        Call<MovieList> call = movieApi.listPopularMovies(movieYear, "vote_average.desc", "75142b6ae9b9f1b3d247b1af9a6131e9");
         call.enqueue(new Callback<MovieList>() {
             @Override
             public void onResponse(Call<MovieList> call, Response<MovieList> response) {
@@ -57,7 +59,9 @@ public class GeneralCardActivity extends AppCompatActivity{
                 Movie specificMovie = popularMovieList.get(randomMovieNumber);
 
                 myList.add(specificMovie);
-                mCardsRecyclerView.setAdapter(new GeneralAdapter(myList));
+                mAdapter = new GeneralAdapter(myList);
+                mCardsRecyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -71,4 +75,6 @@ public class GeneralCardActivity extends AppCompatActivity{
         random = new Random();
         return String.valueOf(random.nextInt(16) + 2000);
     }
+
+
 }

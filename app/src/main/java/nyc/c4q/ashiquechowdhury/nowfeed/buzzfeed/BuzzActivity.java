@@ -25,11 +25,16 @@ public class BuzzActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buzz);
-        getBuzzfeedArticle();
         recycle = (RecyclerView) findViewById(R.id.recyclerviewwidget);
         recycle.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getBuzzfeedArticle();
+
+    }
 
     public void getBuzzfeedArticle() {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="300dp"
     android:layout_margin="8sp"
     android:orientation="vertical">
 
@@ -9,13 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imdblogoiView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:src="@drawable/imdblogo"/>
+
         <TextView
             android:id="@+id/movie_year_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="2011 Popular Hits"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_below="@id/imdblogoiView"/>
 
         <ImageView
             android:id="@+id/movie_imageView"
